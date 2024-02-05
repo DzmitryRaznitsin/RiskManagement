@@ -22,8 +22,8 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      # - name: risk-management-destination
-      # - name: risk-management-db
+      - name: risk-management-destination
+      - name: risk-management-db
       - name: risk-management-auth
 
   - name: risk-management-db-deployer
@@ -31,8 +31,8 @@ modules:
     path: gen/db
     parameters:
       buildpack: nodejs_buildpack
-    # requires:
-    #   - name: risk-management-db
+    requires:
+      - name: risk-management-db
 
   - name: risk-management
     type: approuter.nodejs
@@ -74,3 +74,13 @@ resources:
           redirect-uris:
             - https://**.hana.ondemand.com/login/callback # Wildcard redirect to SAP BTP (You might want to make this more exclusive)
             # example: - https://risk-management-approuter.cfapps.eu10-004.hana.ondemand.com/login/callback
+  - name: risk-management-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+  - name: risk-management-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite  
