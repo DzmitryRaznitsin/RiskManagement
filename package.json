@@ -11,7 +11,7 @@
     "@sap/cds-hana": "^2",
     "@sap/xssec": "^3",
     "express": "^4",
-    "npx": "^3.0.0",
+    "npx": "^10.2.2",
     "passport": "^0"
   },
   "devDependencies": {
