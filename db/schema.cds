@@ -15,7 +15,7 @@ entity Risks : cuid, managed {
         descr                    : String;
         miti                     : Association to Mitigations;
         impact                   : Integer;
-        bp : Association to BusinessPartners;
+        bp                       : Association to BusinessPartners;
         virtual criticality      : Integer;
         virtual PrioCriticality : Integer;
 }
